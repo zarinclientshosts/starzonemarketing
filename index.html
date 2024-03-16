@@ -56,17 +56,7 @@
             </div>              
         </div>
 		<!--Preloader area end here-->
-				<!-- Call and whatsapp button start -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<a href="tel:+1XXXXXXXXXX" class="float">
-<i class="fa fa-phone my-float"></i>
-</a>
-
-<a href="https://wa.me/1XXXXXXXXXX" class="float float2">
-<i class="fa fa-whatsapp my-float"></i>
-</a>
-<!-- Call and whatsapp button End -->	
+			
 		<!-- Main content Start -->
 		<div class="main-content">
 
@@ -1219,6 +1209,89 @@
 			</div>
 		</div>
 		<!-- Search Modal End -->
+<script>
+// Widget.js
+
+(function () {
+    // Create style element
+    var style = document.createElement('style');
+    style.innerHTML = `
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 120px;
+            left: 40px;
+            background-color: #075e54;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 20px 20px 30px -10px #192824;
+            transition: .5s; 
+            -webkit-transition: .5s;
+            z-index: 9999; /* Ensure it's above other content */
+        }
+
+        .float:hover:after {
+            content: "Phone Call";
+            display: inline;
+            position: fixed;
+            color: white;
+            background: #075e54;
+            border-radius: 30px;
+            padding: 20px;
+            margin-top: 0px;
+            margin-left: -35px;
+            padding-left: 40px;
+            z-index: -10; /* Keep it behind the button */
+            font-family: "Lato", sans-serif;
+        }
+
+        .float2 {
+            bottom: 40px;
+            left: 40px;
+            z-index: 9999; /* Ensure it's above other content */
+        }
+
+        .float2:hover:after {
+            content: "Whatsapp";
+            font-family: "Lato", sans-serif;
+        }
+
+        .my-float {
+            margin-top: 12px;
+            font-size: 36px!important;
+        }
+    `;
+
+    // Append style element to the head
+    document.head.appendChild(style);
+
+    // Create link element for font-awesome
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+
+    // Append link element to the head
+    document.head.appendChild(link);
+
+    // Create phone call button
+    var phoneCallButton = document.createElement('a');
+    phoneCallButton.href = 'tel:+1XXXXXXXXXX';
+    phoneCallButton.className = 'float';
+    phoneCallButton.innerHTML = '<i class="fa fa-phone my-float"></i>';
+
+    // Create WhatsApp button
+    var whatsappButton = document.createElement('a');
+    whatsappButton.href = 'https://wa.me/1XXXXXXXXXX';
+    whatsappButton.className = 'float float2';
+    whatsappButton.innerHTML = '<i class="fa fa-whatsapp my-float"></i>';
+
+    // Append buttons to the body
+    document.body.appendChild(phoneCallButton);
+    document.body.appendChild(whatsappButton);
+})();
+</script>
 		<!-- modernizr js -->
 		<script src="assets/js/modernizr-2.8.3.min.js"></script>
 		<!-- jquery latest version -->
