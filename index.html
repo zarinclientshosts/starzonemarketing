@@ -1210,97 +1210,90 @@
 		</div>
 		<!-- Search Modal End -->
 <script>
-// Widget.js
+// Create a new JavaScript file, e.g., quickContactWidget.js
 
-(function () {
-    // Create style element
-    var style = document.createElement('style');
-    style.innerHTML = `
-        .float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 120px;
-            left: 40px;
-            background-color: #075e54;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 20px 20px 30px -10px #192824;
-            transition: .5s; 
-            -webkit-transition: .5s;
-            z-index: 9999; /* Ensure it's above other content */
-        }
+// Function to add CSS styles to the page
+function addStyles() {
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .quick_contact a {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      right: 18px;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 40px;
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      transition: transform 0.5s ease;
+    }
+    .qwhtsapp {
+      bottom: 90px;
+      background-color: #25d366;
+    }
+    .qcall {
+      bottom: 160px;
+      background-color: #2196f3;
+    }
+    .quick_contact_icon {
+      margin-top: 10px;
+      animation: blink 1s infinite; /* Adding blinking animation */
+    }
+    .quick_contact a:hover {
+      transform: scale(1.1);
+    }
+    
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+  `;
+  document.head.appendChild(style);
+}
 
-        .float:hover:after {
-            content: "Phone Call";
-            display: inline;
-            position: fixed;
-            color: white;
-            background: #075e54;
-            border-radius: 30px;
-            padding: 20px;
-            margin-top: 0px;
-            margin-left: -35px;
-            padding-left: 40px;
-            z-index: -10; /* Keep it behind the button */
-            font-family: "Lato", sans-serif;
-        }
+// Function to add HTML to the page
+function addHTML() {
+  const quickContactDiv = document.createElement('div');
+  quickContactDiv.classList.add('quick_contact');
 
-        .float2 {
-            bottom: 40px;
-            left: 40px;
-            z-index: 9999; /* Ensure it's above other content */
-        }
+  const whatsappLink = document.createElement('a');
+  whatsappLink.href = 'https://api.whatsapp.com/send?phone=923455917782&text=hello';
+  whatsappLink.classList.add('qwhtsapp');
+  whatsappLink.target = '_blank';
+  whatsappLink.innerHTML = '<i class="fa fa-whatsapp quick_contact_icon"></i>';
+  quickContactDiv.appendChild(whatsappLink);
 
-        .float2:hover:after {
-            content: "Whatsapp";
-            font-family: "Lato", sans-serif;
-        }
+  const callLink = document.createElement('a');
+  callLink.href = 'tel:+923455917782';
+  callLink.classList.add('qcall');
+  callLink.target = '_blank';
+  callLink.innerHTML = '<i class="fa fa-phone quick_contact_icon"></i>';
+  quickContactDiv.appendChild(callLink);
 
-        .my-float {
-            margin-top: 12px;
-            font-size: 36px!important;
-            animation: blink 1s infinite alternate; /* Add blinking animation */
-        }
+  document.body.appendChild(quickContactDiv);
+}
 
-        @keyframes blink {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0.3;
-            }
-        }
-    `;
+// Function to load Font Awesome CSS
+function loadFontAwesome() {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+  document.head.appendChild(link);
+}
 
-    // Append style element to the head
-    document.head.appendChild(style);
+// Call functions to add styles, HTML, and load Font Awesome
+function initQuickContactWidget() {
+  addStyles();
+  addHTML();
+  loadFontAwesome();
+}
 
-    // Create link element for font-awesome
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+// Initialize the widget
+initQuickContactWidget();
 
-    // Append link element to the head
-    document.head.appendChild(link);
-
-    // Create phone call button
-    var phoneCallButton = document.createElement('a');
-    phoneCallButton.href = 'tel:+923455917782';
-    phoneCallButton.className = 'float';
-    phoneCallButton.innerHTML = '<i class="fa fa-phone my-float"></i>';
-
-    // Create WhatsApp button
-    var whatsappButton = document.createElement('a');
-    whatsappButton.href = 'https://wa.me/923455917782';
-    whatsappButton.className = 'float float2';
-    whatsappButton.innerHTML = '<i class="fa fa-whatsapp my-float"></i>';
-
-    // Append buttons to the body
-    document.body.appendChild(phoneCallButton);
-    document.body.appendChild(whatsappButton);
-})();
 </script>
 		<!-- modernizr js -->
 		<script src="assets/js/modernizr-2.8.3.min.js"></script>
